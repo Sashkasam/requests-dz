@@ -15,7 +15,7 @@ for all_heroes in response:
 
 
 
-# print(f'Самый умный это {max(new_dict.keys())} у него {max(new_dict.values())}  интеллекта')
+print(f'Самый умный это {max(new_dict.keys())} у него {max(new_dict.values())}  интеллекта')
 
 
 # Задача № 2 
@@ -41,15 +41,6 @@ class Yandexloader:
             print("Файл успешно загружен")
 
 
-if __name__ == '__main__':
-    path_to_file = "C:/Users/boss/Desktop/my photo/family.JPG"
-    token = input("Введите свой токен от яндекс-диска: ")
-    uploader = Yandexloader(token)
-    result = uploader.uploader_file(path_to_file)
-    print(result)
-
-
-
 # Вариант решения № 2 с помощью библиотеки yadisk
 user_token = input("Введите свой токен от яндекс диска: ")
 path_to_file = "C:/Users/boss/Desktop/my photo/family.JPG"
@@ -58,7 +49,21 @@ my_disk = yadisk.YaDisk(token = user_token)
 with open(path_to_file, "rb") as file:
     my_disk.upload(file,file_name)
 
+# Задача № 3
+def question_tag_python():
+    url = "https://api.stackexchange.com/2.3/questions?fromdate=1664323200&order=desc&max=1664496000&order=desc&sort=activity&tagged=Python&site=stackoverflow"
+    response = requests.get(url)
+    response.raise_for_status()
+    result = response.json()
+    pprint(result)
 
+if __name__ == '__main__':
+    path_to_file = "C:/Users/boss/Desktop/my photo/family.JPG"
+    token = input("Введите свой токен от яндекс-диска: ")
+    uploader = Yandexloader(token)
+    result = uploader.uploader_file(path_to_file)
+    print(result)
+    question_tag_python()
 
 
 
